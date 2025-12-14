@@ -28,10 +28,12 @@ app.use(
 
 /*variables*/
 app.use((req, res, next) => {
-  res.locals.isLoggedIn = !!req.session.userId;
-  res.locals.currentUser = req.session.userId || null;
-  next();
-});
+    res.locals.isLoggedIn = !!req.session.userId;
+    res.locals.currentUser = req.session.userId || null;
+    res.locals.basePath = '';
+    next();
+  });
+  
 
 /*db conenct*/
 const db = mysql.createPool({
