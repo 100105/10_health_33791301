@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<header>
+  <h1>Register</h1>
+  <nav><a href="/">Home</a></nav>
+</header>
+
+<div class="container">
+    <form method="POST" action="/users/register">
+        <label>First name:</label>
+    <input type="text" name="first" value="<%= data.first || '' %>" required>
+
+    <label>Last name:</label>
+    <input type="text" name="last" value="<%= data.last || '' %>" required>
+
+    <label>Email:</label>
+    <input type="email" name="email" value="<%= data.email || '' %>" required>
+
+    <label>Username:</label>
+    <input type="text" name="username" value="<%= data.username || '' %>" required>
+
+    <label>Password:</label>
+    <input type="password" name="password" required>
+
+    <input type="submit" value="Register">
+  </form>
+
+  <% if (errors.length) { %>
+    <div class="error">
+      <ul>
+        <% errors.forEach(e => { %>
+          <li><%= e.msg %></li>
+        <% }) %>
+      </ul>
+    </div>
+  <% } %>
+
+  <p>Password must be 8+ chars and include: lowercase, uppercase, number, special character.</p>
+</div>
+</body>
+</html>

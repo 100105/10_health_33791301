@@ -1,0 +1,30 @@
+-- create_db.sql (required)
+
+CREATE DATABASE IF NOT EXISTS health;
+USE health;
+
+CREATE TABLE IF NOT EXISTS bookings (
+    id INT AUTO_INCREMENT,
+    patient_name VARCHAR(100) NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    reason VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    first VARCHAR(50) NOT NULL,
+    last VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    hashedPassword VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS login_audit (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50),
+    success BOOLEAN,
+    login_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

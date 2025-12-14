@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Health Clinic App</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<header>
+  <h1>Health Clinic Booking</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/bookings/search">Search</a>
+
+    <% if (isLoggedIn) { %>
+      <a href="/bookings/add">Add Booking</a>
+      <a href="/bookings/list">View Bookings</a>
+      <a href="/users/audit">Audit</a>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/users/login">Login</a>
+      <a href="/users/register">Register</a>
+    <% } %>
+  </nav>
+</header>
+
+<div class="container">
+  <h2>Welcome</h2>
+  <p>This system allows users to register/login and book clinic appointments.</p>
+
+  <% if (isLoggedIn) { %>
+    <p>You are logged in as <strong><%= currentUser %></strong>.</p>
+  <% } %>
+</div>
+</body>
+</html>

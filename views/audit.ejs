@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login Audit</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<header>
+  <h1>Login Audit</h1>
+  <nav><a href="/">Home</a></nav>
+</header>
+
+<div class="container">
+  <table>
+    <tr>
+      <th>Username</th>
+      <th>Success</th>
+      <th>Time</th>
+    </tr>
+
+    <% logs.forEach(log => { %>
+      <tr>
+        <td><%= log.username %></td>
+        <td><%= log.success ? "Yes" : "No" %></td>
+        <td><%= log.login_time %></td>
+      </tr>
+    <% }) %>
+  </table>
+</div>
+</body>
+</html>

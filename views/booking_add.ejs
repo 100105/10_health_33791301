@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Add Booking</title>
+  <link rel="stylesheet" href="/main.css">
+</head>
+<body>
+<header>
+  <h1>Add Booking</h1>
+  <nav><a href="/">Home</a> <a href="/bookings/list">View Bookings</a></nav>
+</header>
+
+<div class="container">
+  <form method="POST" action="/bookings/added">
+    <label>Patient name:</label>
+    <input type="text" name="patient_name" required>
+
+    <label>Date:</label>
+    <input type="date" name="appointment_date" required>
+
+    <label>Time:</label>
+    <input type="time" name="appointment_time" required>
+
+    <label>Reason:</label>
+    <input type="text" name="reason">
+
+    <input type="submit" value="Add Booking">
+  </form>
+
+  <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+</div>
+</body>
+</html>
