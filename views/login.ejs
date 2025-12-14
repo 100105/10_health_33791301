@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="<%= basePath %>/main.css">
 </head>
 <body>
 <header>
   <h1>Login</h1>
-  <nav><a href="/">Home</a></nav>
+  <nav><a href="<%= basePath %>/">Home</a></nav>
 </header>
 
 <div class="container">
-    <form method="POST" action="/users/login">
-        <label>Username:</label>
+  <form method="POST" action="<%= basePath %>/users/login">
+    <label>Username:</label>
     <input type="text" name="username" required>
 
     <label>Password:</label>

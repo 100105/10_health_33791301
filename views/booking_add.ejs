@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Booking</title>
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="<%= basePath %>/main.css">
 </head>
 <body>
 <header>
   <h1>Add Booking</h1>
-  <nav><a href="/">Home</a> <a href="/bookings/list">View Bookings</a></nav>
+  <nav>
+    <a href="<%= basePath %>/">Home</a>
+    <a href="<%= basePath %>/bookings/list">View Bookings</a>
+    <a href="<%= basePath %>/logout">Logout</a>
+  </nav>
 </header>
 
 <div class="container">
-  <form method="POST" action="/bookings/added">
+  <form method="POST" action="<%= basePath %>/bookings/added">
     <label>Patient name:</label>
     <input type="text" name="patient_name" required>
 

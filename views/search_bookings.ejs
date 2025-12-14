@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Search Appointments</title>
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="<%= basePath %>/main.css">
 </head>
 <body>
 
 <header>
   <h1>Search Appointments by Date</h1>
   <nav>
-    <a href="/">Home</a>
-    <a href="/bookings/list">My Appointments</a>
-    <a href="/logout">Logout</a>
+    <a href="<%= basePath %>/">Home</a>
+    <a href="<%= basePath %>/bookings/list">My Appointments</a>
+    <a href="<%= basePath %>/logout">Logout</a>
   </nav>
 </header>
 
 <div class="container">
-  <form method="GET" action="/bookings/search-results">
+  <form method="GET" action="<%= basePath %>/bookings/search-results">
     <label>Select date:</label><br>
     <input type="date" name="date" required>
     <br><br>
@@ -25,7 +25,7 @@
   </form>
 
   <br>
-  <a href="/">Return Home</a>
+  <a href="<%= basePath %>/">Return Home</a>
 </div>
 
 </body>

@@ -9,41 +9,42 @@ const expressSanitizer = require('express-sanitizer');
 const app = express();
 const port = 8000;
 
-// ---- BASE PATH (CRITICAL FOR GOLDSMITHS VM)
+// ✅ Base path for Goldsmiths VM (e.g. /usr/sshah004) OR empty locally
 const basePath = process.env.HEALTH_BASE_PATH || '';
 
-// ---- STATIC FILES
-app.use(express.static(path.join(__dirname, 'public')));
-
-// ---- VIEW ENGINE
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSanitizer());
 
-// ---- SESSIONS
+// ✅ Static files (CSS) - works with basePath because links will include basePath
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(session({
   secret: 'health-secret',
   resave: false,
   saveUninitialized: false
 }));
 
-// ---- GLOBAL VARIABLES FOR EJS
+// ✅ Make these available in all EJS pages
 app.use((req, res, next) => {
   res.locals.isLoggedIn = !!req.session.userId;
+  res.locals.currentUser = req.session.userId || null;
   res.locals.basePath = basePath;
   next();
 });
 
-// ---- DATABASE
+// ✅ Database pool
 const db = mysql.createPool({
   host: process.env.HEALTH_HOST,
   user: process.env.HEALTH_USER,
   password: process.env.HEALTH_PASSWORD,
-  database: process.env.HEALTH_DATABASE
+  database: process.env.HEALTH_DATABASE,
+  waitForConnections: true,
+  connectionLimit: 10
 });
 global.db = db;
 
-// ---- ROUTES (BASE PATH AWARE)
+// ✅ Mount routes under basePath so VM URLs work
 app.use(basePath + '/', require('./routes/main'));
 app.use(basePath + '/users', require('./routes/users'));
 app.use(basePath + '/bookings', require('./routes/bookings'));

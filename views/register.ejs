@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Register</title>
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="<%= basePath %>/main.css">
 </head>
 <body>
 <header>
   <h1>Register</h1>
-  <nav><a href="/">Home</a></nav>
+  <nav><a href="<%= basePath %>/">Home</a></nav>
 </header>
 
 <div class="container">
-    <form method="POST" action="/users/register">
-        <label>First name:</label>
+  <form method="POST" action="<%= basePath %>/users/register">
+    <label>First name:</label>
     <input type="text" name="first" value="<%= data.first || '' %>" required>
 
     <label>Last name:</label>

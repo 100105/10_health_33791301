@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>Health Clinic App</title>
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="<%= basePath %>/main.css">
 </head>
 <body>
 <header>
   <h1>Health Clinic Booking</h1>
   <nav>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
-    <a href="/bookings/search">Search</a>
+    <a href="<%= basePath %>/">Home</a>
+    <a href="<%= basePath %>/about">About</a>
 
     <% if (isLoggedIn) { %>
-      <a href="/bookings/add">Add Booking</a>
-      <a href="/bookings/list">View Bookings</a>
-      <a href="/users/audit">Audit</a>
-      <a href="/logout">Logout</a>
+      <a href="<%= basePath %>/bookings/search">Search</a>
+      <a href="<%= basePath %>/bookings/add">Add Booking</a>
+      <a href="<%= basePath %>/bookings/list">View Bookings</a>
+      <a href="<%= basePath %>/users/audit">Audit</a>
+      <a href="<%= basePath %>/logout">Logout</a>
     <% } else { %>
-      <a href="/users/login">Login</a>
-      <a href="/users/register">Register</a>
+      <a href="<%= basePath %>/users/login">Login</a>
+      <a href="<%= basePath %>/users/register">Register</a>
     <% } %>
   </nav>
 </header>

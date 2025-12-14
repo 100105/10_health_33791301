@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Search Results</title>
-  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="<%= basePath %>/main.css">
 </head>
 <body>
 
 <header>
   <h1>Appointments on <%= date %></h1>
   <nav>
-    <a href="/">Home</a>
-    <a href="/bookings/search">Search Again</a>
-    <a href="/bookings/list">My Appointments</a>
-    <a href="/logout">Logout</a>
+    <a href="<%= basePath %>/">Home</a>
+    <a href="<%= basePath %>/bookings/search">Search Again</a>
+    <a href="<%= basePath %>/bookings/list">My Appointments</a>
+    <a href="<%= basePath %>/logout">Logout</a>
   </nav>
 </header>
 
@@ -39,7 +39,7 @@
           <td><%= b.appointment_time %></td>
           <td><%= b.reason %></td>
           <td>
-            <form method="POST" action="/bookings/delete/<%= b.id %>">
+            <form method="POST" action="<%= basePath %>/bookings/delete/<%= b.id %>">
               <input type="submit" value="Delete">
             </form>
           </td>
