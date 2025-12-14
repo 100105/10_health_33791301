@@ -9,37 +9,32 @@ const expressSanitizer = require('express-sanitizer');
 const app = express();
 const port = 8000;
 
-// Serve static files (CSS)
+// ---- BASE PATH (CRITICAL FOR GOLDSMITHS VM)
+const basePath = process.env.HEALTH_BASE_PATH || '';
+
+// ---- STATIC FILES
 app.use(express.static(path.join(__dirname, 'public')));
 
-// View engine
+// ---- VIEW ENGINE
 app.set('view engine', 'ejs');
-
-// Body parser + sanitizer
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSanitizer());
 
-// Sessions
+// ---- SESSIONS
 app.use(session({
   secret: 'health-secret',
   resave: false,
   saveUninitialized: false
 }));
 
-app.use((req, res, next) => {
-    res.locals.isLoggedIn = !!req.session.userId;
-    res.locals.currentUser = req.session.userId || null;
-    next();
-  });
-  
-
-// Make login state available to all EJS pages
+// ---- GLOBAL VARIABLES FOR EJS
 app.use((req, res, next) => {
   res.locals.isLoggedIn = !!req.session.userId;
+  res.locals.basePath = basePath;
   next();
 });
 
-// Database connection
+// ---- DATABASE
 const db = mysql.createPool({
   host: process.env.HEALTH_HOST,
   user: process.env.HEALTH_USER,
@@ -48,12 +43,11 @@ const db = mysql.createPool({
 });
 global.db = db;
 
-// Routes
-app.use('/', require('./routes/main'));
-app.use('/users', require('./routes/users'));
-app.use('/bookings', require('./routes/bookings'));
+// ---- ROUTES (BASE PATH AWARE)
+app.use(basePath + '/', require('./routes/main'));
+app.use(basePath + '/users', require('./routes/users'));
+app.use(basePath + '/bookings', require('./routes/bookings'));
 
-// Start server
 app.listen(port, () => {
   console.log(`App running on http://localhost:${port}`);
 });
