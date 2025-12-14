@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-/* middleware: must be logged in */
+/* middleware have to be logged in */
 const redirectLogin = (req, res, next) => {
   if (!req.session.userId) {
     return res.redirect('/users/login');
@@ -9,16 +9,12 @@ const redirectLogin = (req, res, next) => {
   next();
 };
 
-/* =========================
-   ADD BOOKING (FORM)
-   ========================= */
+/*form to add booking*/
 router.get('/add', redirectLogin, (req, res) => {
   res.render('booking_add.ejs', { error: null });
 });
 
-/* =========================
-   ADD BOOKING (HANDLER)
-   ========================= */
+/*add booking*/
 router.post('/added', redirectLogin, (req, res) => {
   const { patient_name, appointment_date, appointment_time, reason } = req.body;
 
@@ -51,9 +47,7 @@ router.post('/added', redirectLogin, (req, res) => {
   );
 });
 
-/* =========================
-   LIST BOOKINGS (USER ONLY)
-   ========================= */
+/*list booking loggedin*/
 router.get('/list', redirectLogin, (req, res) => {
   db.query(
     `SELECT * FROM bookings
@@ -69,9 +63,7 @@ router.get('/list', redirectLogin, (req, res) => {
   );
 });
 
-/* =========================
-   DELETE BOOKING (SAFE)
-   ========================= */
+/*delete booking*/
 router.post('/delete/:id', redirectLogin, (req, res) => {
   db.query(
     'DELETE FROM bookings WHERE id = ? AND user_id = ?',
@@ -82,16 +74,12 @@ router.post('/delete/:id', redirectLogin, (req, res) => {
   );
 });
 
-/* =========================
-   SEARCH BOOKINGS (FORM)
-   ========================= */
+/*search bookings form*/
 router.get('/search', redirectLogin, (req, res) => {
   res.render('search_bookings.ejs');
 });
 
-/* =========================
-   SEARCH BOOKINGS (RESULTS)
-   ========================= */
+/*search booking results*/
 router.get('/search-results', redirectLogin, (req, res) => {
   db.query(
     `SELECT * FROM bookings
