@@ -22,17 +22,27 @@ router.post('/added', redirectLogin, (req, res) => {
   }
 
   db.query(
-    `INSERT INTO bookings (patient_name, appointment_date, appointment_time, reason, user_id)
+    `INSERT INTO bookings
+     (patient_name, appointment_date, appointment_time, reason, user_id)
      VALUES (?, ?, ?, ?, ?)`,
-    [patient_name, appointment_date, appointment_time, reason || null, req.session.userId],
+    [
+      patient_name,
+      appointment_date,
+      appointment_time,
+      reason,
+      req.session.userId
+    ],
     (err) => {
       if (err) {
-        return res.render('booking_add.ejs', { error: 'Error saving booking' });
+        console.log(err); // <-- IMPORTANT
+        return res.render('booking_add.ejs', {
+          error: 'Error saving booking'
+        });
       }
-      res.redirect(res.locals.basePath + '/bookings/list');
+      res.redirect('/bookings/list');
     }
   );
-});
+  
 
 // List bookings (ONLY your bookings)
 router.get('/list', redirectLogin, (req, res) => {
