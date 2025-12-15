@@ -3,29 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Search Appointments</title>
-  <link rel="stylesheet" href="<%= basePath %>/main.css">
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
 
 <header>
   <h1>Search Appointments by Date</h1>
   <nav>
-    <a href="<%= basePath %>/">Home</a>
-    <a href="<%= basePath %>/bookings/list">My Appointments</a>
-    <a href="<%= basePath %>/logout">Logout</a>
+    <a href="/">Home</a>
+    <a href="/bookings/list">My Appointments</a>
+    <a href="/logout">Logout</a>
   </nav>
 </header>
 
 <div class="container">
-  <form method="GET" action="<%= basePath %>/bookings/search-results">
+  <form method="GET" action="./search-results">
     <label>Select date:</label><br>
     <input type="date" name="date" required>
     <br><br>
     <input type="submit" value="Search">
   </form>
-
-  <br>
-  <a href="<%= basePath %>/">Return Home</a>
 </div>
 
 </body>

@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Add Booking</title>
-  <link rel="stylesheet" href="<%= basePath %>/main.css">
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
+
 <header>
   <h1>Add Booking</h1>
   <nav>
-    <a href="<%= basePath %>/">Home</a>
-    <a href="<%= basePath %>/bookings/list">View Bookings</a>
-    <a href="<%= basePath %>/logout">Logout</a>
+    <a href="/">Home</a>
+    <a href="/bookings/list">View Bookings</a>
+    <a href="/logout">Logout</a>
   </nav>
 </header>
 
 <div class="container">
-  <form method="POST" action="<%= basePath %>/bookings/added">
+  <form method="POST" action="./added">
     <label>Patient name:</label>
     <input type="text" name="patient_name" required>
 
@@ -36,5 +37,6 @@
     <p class="error"><%= error %></p>
   <% } %>
 </div>
+
 </body>
 </html>
