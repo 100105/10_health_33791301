@@ -29,6 +29,10 @@
 <div class="container">
   <h2>Welcome. thanks for using our system!</h2>
   <p>To view your appointments please log in or register to Sara's health clinic.</p>
+  <img 
+  src="<%= basePath %>/images/clinic.jpg" 
+  alt="Sara's Health Clinic"
+  style="max-width: 600px; width: 100%; margin-top: 20px; border-radius: 8px;">
 
   <% if (isLoggedIn) { %>
     <p>You are logged in as <strong><%= currentUser %></strong>.</p>
