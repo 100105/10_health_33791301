@@ -28,20 +28,22 @@
 
 <div class="container">
   <h2>Welcome. thanks for using our system!</h2>
-  <p>To view your appointments please log in or register to Sara's health clinic.</p>
-  <img 
-  src="/images/clinic.jpg" 
-  alt="Sara's Health Clinic"
-  style="max-width: 600px; width: 100%; margin-top: 20px; border-radius: 8px;">
+
   <% if (!isLoggedIn) { %>
     <p>
       To view your appointments please log in or register to Sara's Health Clinic.
     </p>
   <% } else { %>
     <p>
-      You are now logged in. 
+      You are now logged in. Please navigate to your appointments or add a new appointment.
     </p>
   <% } %>
+
+  <img 
+    src="/images/clinic.jpg" 
+    alt="Sara's Health Clinic"
+    style="max-width: 600px; width: 100%; margin-top: 20px; border-radius: 8px;">
 </div>
+
 </body>
 </html>
