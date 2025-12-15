@@ -73,4 +73,14 @@ router.post('/login', (req, res) => {
   );
 });
 
+router.get('/audit', redirectLogin, (req, res) => {
+  db.query(
+    'SELECT * FROM login_audit ORDER BY login_time DESC',
+    (err, logs) => {
+      if (err) return res.send('Database error');
+      res.render('audit.ejs', { logs });
+    }
+  );
+});
+
 module.exports = router;
