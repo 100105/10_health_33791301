@@ -3,37 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Health Clinic App</title>
-  <link rel="stylesheet" href="<%= basePath %>/main.css">
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
+
 <header>
   <h1>Health Clinic Booking</h1>
   <nav>
-    <a href="<%= basePath %>/">Home</a>
-    <a href="<%= basePath %>/about">About</a>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
 
     <% if (isLoggedIn) { %>
-      <a href="<%= basePath %>/bookings/search">Search</a>
-      <a href="<%= basePath %>/bookings/add">Add Booking</a>
-      <a href="<%= basePath %>/bookings/list">View Bookings</a>
-      <a href="<%= basePath %>/users/audit">Audit</a>
-      <a href="<%= basePath %>/logout">Logout</a>
+      <a href="/bookings/add">Add Booking</a>
+      <a href="/bookings/list">My Appointments</a>
+      <a href="/bookings/search">Search</a>
+      <a href="/logout">Logout</a>
     <% } else { %>
-      <a href="<%= basePath %>/users/login">Login</a>
-      <a href="<%= basePath %>/users/register">Register</a>
+      <a href="/users/login">Login</a>
+      <a href="/users/register">Register</a>
     <% } %>
   </nav>
 </header>
 
 <div class="container">
-  <h2>Welcome</h2>
-  <h3>Thank you for using our service!</h3>
-  <p>To view your appointments please log in or register to Sara's health clinic.
-  </p>
+  <h2>Welcome. Thanks for using our system!</h2>
+  <p>To view your appointments please log in or register to Sara's health clinic.</p>
 
   <% if (isLoggedIn) { %>
     <p>You are logged in as <strong><%= currentUser %></strong>.</p>
   <% } %>
 </div>
+
 </body>
 </html>

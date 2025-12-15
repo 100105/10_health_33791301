@@ -3,16 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
-  <link rel="stylesheet" href="<%= basePath %>/main.css">
+  <link rel="stylesheet" href="/main.css">
 </head>
 <body>
+
 <header>
   <h1>Login</h1>
-  <nav><a href="<%= basePath %>/">Home</a></nav>
+  <nav>
+    <a href="/">Home</a>
+  </nav>
 </header>
 
 <div class="container">
-  <form method="POST" action="<%= basePath %>/users/login">
+  <form method="POST" action="login">
     <label>Username:</label>
     <input type="text" name="username" required>
 
@@ -26,5 +29,6 @@
     <p class="error"><%= error %></p>
   <% } %>
 </div>
+
 </body>
 </html>
