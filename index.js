@@ -30,7 +30,7 @@ app.use(
 app.use((req, res, next) => {
     res.locals.isLoggedIn = !!req.session.userId;
     res.locals.currentUser = req.session.userId || null;
-    res.locals.basePath = '';
+    res.locals.basePath = process.env.HEALTH_BASE_PATH;
     next();
   });
   
