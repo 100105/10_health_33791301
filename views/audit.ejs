@@ -6,12 +6,15 @@
   <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-
 <header>
   <h1>Login Audit</h1>
   <nav>
     <a href="/">Home</a>
-    <a href="../logout">Logout</a>
+
+    <!-- 🔒 LOGOUT: POST -->
+    <form method="POST" action="../logout" style="display:inline;">
+      <button type="submit">Logout</button>
+    </form>
   </nav>
 </header>
 
@@ -32,6 +35,5 @@
     <% }) %>
   </table>
 </div>
-
 </body>
 </html>
