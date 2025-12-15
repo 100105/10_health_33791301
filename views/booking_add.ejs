@@ -6,15 +6,13 @@
   <link rel="stylesheet" href="/main.css">
 </head>
 <body>
-
 <header>
   <h1>Add Booking</h1>
   <nav>
-    <a href="/">Home</a>
-    <a href="/bookings/list">View Bookings</a>
-    <form method="POST" action="../do-logout" class="logout-form">
-      <button type="submit">Logout</button>
-    </form>
+    <a href="../">Home</a>
+    <a href="./list">View Bookings</a>
+    <!-- FIX -->
+    <a href="../logout">Logout</a>
   </nav>
 </header>
 
@@ -39,6 +37,5 @@
     <p class="error"><%= error %></p>
   <% } %>
 </div>
-
 </body>
 </html>

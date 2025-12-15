@@ -9,9 +9,12 @@ router.get("/about", (req, res) => {
   res.render("about.ejs");
 });
 
-router.post("/do-logout", (req, res) => {
-  req.session.destroy(() => {
-    res.redirect("..");
+router.get("/logout", (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.redirect("./");
+    }
+    res.redirect("./");
   });
 });
 
