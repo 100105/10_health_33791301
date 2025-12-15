@@ -3,6 +3,13 @@ const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
 
+const redirectLogin = (req, res, next) => {
+  if (!req.session.userId) {
+    return res.redirect('../users/login');
+  }
+  next();
+};
+
 /* REGISTER PAGE */
 router.get('/register', (req, res) => {
   if (req.session.userId) return res.redirect('..');
