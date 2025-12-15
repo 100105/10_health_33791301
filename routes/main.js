@@ -11,7 +11,6 @@ router.get("/about", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.session.destroy(() => {
-    // ✅ stay inside app on VM
     res.redirect(res.locals.basePath + "/");
   });
 });

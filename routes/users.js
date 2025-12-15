@@ -10,7 +10,7 @@ const redirectLogin = (req, res, next) => {
   next();
 };
 
-// ---- REGISTER PAGE (only if not logged in)
+// register only shows when not logged in
 router.get('/register', (req, res) => {
   if (req.session.userId) {
     return res.redirect(res.locals.basePath + '/');
@@ -18,10 +18,11 @@ router.get('/register', (req, res) => {
   res.render('register.ejs', { errors: [], data: {} });
 });
 
-// ---- REGISTER HANDLER
+// register route handler
 router.post(
   '/register',
   [
+    //validation
     check('first').trim().notEmpty().withMessage('First name is required'),
     check('last').trim().notEmpty().withMessage('Last name is required'),
     check('email').trim().isEmail().withMessage('Valid email is required'),
@@ -41,7 +42,7 @@ router.post(
         data: req.body
       });
     }
-
+    //sanitisation
     const cleanUsername = req.sanitize(req.body.username.trim());
     const cleanFirst = req.sanitize(req.body.first.trim());
     const cleanLast = req.sanitize(req.body.last.trim());
@@ -60,7 +61,7 @@ router.post(
   }
 );
 
-// ---- LOGIN PAGE (only if not logged in)
+// shows login if not logged in already
 router.get('/login', (req, res) => {
   if (req.session.userId) {
     return res.redirect(res.locals.basePath + '/');
@@ -68,7 +69,7 @@ router.get('/login', (req, res) => {
   res.render('login.ejs', { error: null });
 });
 
-// ---- LOGIN HANDLER (+ audit log)
+// login & audit handler
 router.post('/login', (req, res) => {
   const username = req.sanitize(req.body.username);
 
@@ -93,13 +94,13 @@ router.post('/login', (req, res) => {
       req.session.userId = results[0].username;
       db.query('INSERT INTO login_audit (username, success) VALUES (?, ?)', [username, true]);
 
-      // ✅ stay inside app on VM
+      
       return res.redirect(res.locals.basePath + '/');
     }
   );
 });
 
-// ---- AUDIT PAGE (logged in only)
+// shows audit page if logged in only
 router.get('/audit', redirectLogin, (req, res) => {
   db.query(
     'SELECT * FROM login_audit ORDER BY login_time DESC',
