@@ -3,25 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <title>About</title>
-  <link rel="stylesheet" href="<%= basePath %>/main.css">
+  <link rel="stylesheet" href="/main.css">
 </head>
+
 <body>
 <header>
   <h1>About</h1>
   <nav>
     <a href="<%= basePath %>/">Home</a>
-    <% if (isLoggedIn) { %><a href="<%= basePath %>/logout">Logout</a><% } %>
+    <% if (isLoggedIn) { %>
+      <a href="<%= basePath %>/logout">Logout</a>
+    <% } %>
   </nav>
 </header>
 
 <div class="container">
-  <p>Welcome to Sara's GP booking system. Here you will be able to view, book, or cancel appointments .</p>
-  <h3>LOCATION</h3>
-  <p> 12 Goldsmiths Road
-    Lewisham Way
-    London
-    SE16 6NW
+
+  <p>
+    Welcome to Sara's GP booking system. Here you will be able to view, book, or cancel appointments
   </p>
+
+  <h2>Clinic Location</h2>
+
+  <p>
+    Our clinic is located at <strong>Goldsmiths, University of London</strong>,
+    New Cross, SE14 6NW.
+  </p>
+
+  <div style="
+    margin-top: 20px;
+    border: 2px solid #005EB8;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 700px;
+  ">
+    <iframe
+      src="https://www.google.com/maps?q=Goldsmiths%20University%20of%20London&output=embed"
+      width="100%"
+      height="350"
+      style="border:0;"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <p style="margin-top: 12px;">
+    <a href="https://www.google.com/maps?q=Goldsmiths+University+of+London"
+       target="_blank">
+      View directions in Google Maps
+    </a>
+  </p>
+
 </div>
+
 </body>
 </html>
