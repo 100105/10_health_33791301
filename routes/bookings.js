@@ -43,7 +43,7 @@ router.post('/delete/:id', redirectLogin, (req, res) => {
   db.query(
     'DELETE FROM bookings WHERE id = ? AND user_id = ?',
     [req.params.id, req.session.userId],
-    () => res.redirect('/bookings/list')
+    () => res.redirect('./list')
   );
 });
 
