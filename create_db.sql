@@ -1,4 +1,3 @@
--- create_db.sql (required)
 
 CREATE DATABASE IF NOT EXISTS health;
 USE health;

@@ -10,13 +10,13 @@ const redirectLogin = (req, res, next) => {
   next();
 };
 
-/* REGISTER PAGE */
+/* register */
 router.get('/register', (req, res) => {
   if (req.session.userId) return res.redirect('..');
   res.render('register.ejs', { errors: [], data: {} });
 });
 
-/* REGISTER HANDLER */
+/* register handleer */
 router.post(
   '/register',
   [
@@ -49,13 +49,13 @@ router.post(
   }
 );
 
-/* LOGIN PAGE */
+/* login */
 router.get('/login', (req, res) => {
   if (req.session.userId) return res.redirect('..');
   res.render('login.ejs', { error: null });
 });
 
-/* LOGIN HANDLER */
+/* login handler */
 router.post('/login', (req, res) => {
   db.query(
     'SELECT * FROM users WHERE username = ?',

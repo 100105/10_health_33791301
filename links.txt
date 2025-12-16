@@ -1,8 +1,1 @@
-home=http://localhost:8000/
-about=http://localhost:8000/about
-register=http://localhost:8000/users/register
-login=http://localhost:8000/users/login
-search=http://localhost:8000/bookings/search
-add_booking=http://localhost:8000/bookings/add
-list_bookings=http://localhost:8000/bookings/list
-audit=http://localhost:8000/users/audit
+home=http://www.doc.gold.ac.uk/usr/103/
