@@ -35,7 +35,7 @@
           <td><%= b.id %></td>
           <td><%= b.patient_name %></td>
           <td><%= b.appointment_date %></td>
-          <td><%= b.appointment_time %></td>
+          <td><%= b.appointment_time.toString().slice(0,5) %></td>
           <td><%= b.reason %></td>
           <td>
             <form method="POST" action="./delete/<%= b.id %>">
